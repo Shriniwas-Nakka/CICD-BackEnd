@@ -1,0 +1,66 @@
+/********************************************************
+* @purpose : Checking reset password api functionality.
+* @file : resetTest.js
+* @author : Shriniwas Nakka
+* @version : npm 3.5.2
+* @since : 25.07.2019
+*********************************************************/
+
+/**
+*@describe : Require the dev-dependencies
+*/
+var chai = require('chai');
+var chaihttp = require('chai-http');
+var expect = chai.expect;
+chai.use(chaihttp);
+chai.should();
+
+/**
+*@describe : requiring server.js file 
+*/
+var server = require('../server');
+var fs = require('fs');
+
+/**
+*@describe : Reading json Data
+*/
+function readFile(){
+    var jsonData = fs.readFileSync('/home/user/Desktop/javascript/FundooNotes/server/test/testcase.json');
+    var parse = JSON.parse(jsonData);
+    return parse;
+}
+
+describe("Test cases for reset password api status", function(){
+    /**
+    *@describe : test for reset password set successful
+    */
+    it("Reset password set Status 200", function(){
+        var json = readFile();
+        console.log(json.reset200);
+
+        chai.request(server).post('/fundoo/resetpassword/:token').send(json.reset200).set('token',json.reset200.token).end((err, data) => {
+            expect(err).to.be.null;
+            expect(data).to.have.status(200);
+        });
+    });
+    /**
+    *@describe : test for reset password fail
+    */
+    it("Failed to reset password Status 400", function(){
+        var json = readFile();
+        chai.request(server).post('/fundoo/resetpassword/:token').send(json.reset400).set('token',json.reset400.token).end((err, data) => {
+            expect(err).to.be.null;
+            expect(data).to.have.status(400);
+        });
+    });
+    // /**
+    // *@describe : test for reset password invalid data
+    // */
+    it("Reset Password Invalid Data Status 422", function(){
+        var json = readFile();
+        chai.request(server).post('/fundoo/resetpassword/:token').send(json.reset422).set('token',json.reset422.token).end((err, data) => {
+            expect(err).to.be.null;
+            expect(data).to.have.status(422);
+        });
+    });
+});

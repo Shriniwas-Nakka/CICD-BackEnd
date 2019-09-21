@@ -1,0 +1,21 @@
+/***********************************************
+ * @Purpose -FundooNotes (Routes)
+ * @file    - routes.js
+ * @author  - Shriniwas Nakka
+ * @since   - 23/07/2019
+ ***********************************************/
+
+var express = require('express');
+var routes = express.Router();
+var userCtrl = require('../controllers/user.controllers');
+var auth = require('../middleware/tokenVerification');
+var s3Service = require('../middleware/aws.services');
+
+routes.post('/registration', userCtrl.registerCtrl);
+routes.post('/login', userCtrl.loginCtrl);
+routes.post('/forgotpassword', userCtrl.forgotCtrl);
+routes.post('/resetpassword/:token', auth.tokenVerification, userCtrl.resetCtrl);
+routes.post('/verify/:token', auth.tokenVerification, userCtrl.verifyCtrl);
+routes.post('/image_upload', auth.tokenVerification, userCtrl.imageUploadCtrl);
+
+module.exports = routes;

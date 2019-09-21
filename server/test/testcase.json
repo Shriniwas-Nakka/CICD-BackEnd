@@ -1,0 +1,254 @@
+{
+    "registration200": {
+        "username": "uyewruygv iusdhfvidhs",
+        "email": "idhusfivdasdfsdfhadv@gmail.com",
+        "mobile": "9568230147",
+        "password": "rushiad1234"
+    },
+    "registration422": {
+        "username": "",
+        "email": "dfgdh@gmail.com",
+        "mobile": "956230147",
+        "password": "rush"
+    },
+    "registration400": {
+        "username": "isedhoasdewfrfighaewrh",
+        "email": "idhusfasdivasdfhadv@gmail.com",
+        "mobile": "9568230147",
+        "password": "rushi1234"
+    },
+    "login200": {
+        "email": "nakkashriniwas1@gmail.com",
+        "password": "actionpop"
+    },
+    "login422": {
+        "email": "",
+        "password": "rushcvb"
+    },
+    "login400": {
+        "email": "sdfasdfasdfasdf@gmail.com",
+        "password": "actionpop"
+    },
+    "forgot200": {
+        "email": "nakkashriniwas1@gmail.com"
+    },
+    "forgot422": {
+        "email": "dsadsfwgh"
+    },
+    "forgot400": {
+        "email": "nakkashrxfgbsdiniwas1@gmail.com"
+    },
+    "reset200": {
+        "password": "shri@1234"
+    },
+    "reset422": {
+        "password": "shri"
+    },
+    "reset400": {
+        "password": "shri@1234"
+    },
+    "emailverify200": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX6GHF.eyJlbWFpbCI6Im5ha2thc2hyaW5pd2FzMUBnbWFpbC5jb20iLCJpYXQiOjE1NjQzODI5ODYsImV4cCI6MTU2NDQ2OTM4Nn0.bLE4gKzZtT1f_s3QefVG3nvLNCpCazkufVKmBBuXRnw"
+    },
+    "emailverify400": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX9HGT.eyJlbWFpbCI6Im5ha2thc2hyaW5pd2FzMUBnbWFpbC5jb20iLCJpYXQiOjE1NjQzODI5ODYsImV4cCI6MTU2NDQ2OTM4Nn0.bLE4gKzZtT1f_s3QefVG3nvLNCpCazkufVKmBBuXRnw"
+    },
+    "image200": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ha2thc2hyaW5pd2FzMUBnbWFpbC5jb20iLCJpYXQiOjE1NjQ3NDg1NDksImV4cCI6MTU2NDgzNDk0OX0.jx-SdaJRo1GXADJcMHsX7Og0SRxKDAOwakD5_c4VFXY"
+    },
+    "image400": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ha2thc2hyaW5pd2FzMUBnbWFpbC5jb20iLCJpYXQiOjE1NjQ3NDg1NDksImV4cCI6MTU2NDgzNDk0OX0.jx-SdaJRo1GXADJcMHsX7Og0SRxKDAOwakD5_c4VFXY"
+    },
+
+    "createNote200": {
+        "title" : "Bridgelabz",
+        "description" : "Hello World",
+        "color" : "red",
+        "reminder" : "03/03/2019",
+        "archive" : false
+    },
+
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ha2thc2hyaW5pd2FzMUBnbWFpbC5jb20iLCJfaWQiOiI1ZDM4MWFlODc0N2MxZjE0ODAyYmQwMTkiLCJpYXQiOjE1NjYwNDE2MDMsImV4cCI6MTU2NjEyODAwM30.vsl132OEvRSsi10U3_YSeiXZA0YQwTmMidYh36426lg",
+
+    "createNote400": {
+        "title" : "",
+        "description" : "Hello World",
+        "color" : "red",
+        "reminder" : "03/03/2019",
+        "archive" : false
+    },
+
+    "createNote422": {
+        "title" : "",
+        "description" : "",
+        "color" : "red",
+        "reminder" : "03/03/2019",
+        "archive" : false
+    },
+
+    "updateNoteTitle200":{
+        "noteID":"5d4d78b4e6b9bc3c0ecb0cb3",
+        "title":"BridgeLabz 124"
+    },
+
+    "updateNoteTitle400":{
+        "noteID":"5d4d78b4e6b9bd3c0ecb0cb3",
+        "title":"BridgeLabz 1234"
+    },
+
+    "updateNoteTitle422":{
+        "noteID":"",
+        "title":""
+    },
+
+    "updateNoteDescription200":{
+        "noteID":"5d4d78b4e6b9bc3c0ecb0cb3",
+        "description":"dsayfyg asdgfysdfyg"
+    },
+
+    "updateNoteDescription400":{
+        "noteID":"5d4d78b4e6b9bd3c0ecb0cb3",
+        "description":" iudfhgusdhfg asdfgii"
+    },
+
+    "updateNoteDescription422":{
+        "noteID":"",
+        "description":""
+    },
+
+    "updateNoteColor200":{
+        "noteID":"5d4d78b4e6b9bc3c0ecb0cb3",
+        "color":"grey"
+    },
+
+    "updateNoteColor400":{
+        "noteID":"5d4d78b4e6b9bd3c0ecb0cb3",
+        "color":"red"
+    },
+
+    "updateNoteColor422":{
+        "noteID":"",
+        "color":""
+    },
+
+    "updateNoteReminder200":{
+        "noteID":"5d4d78b4e6b9bc3c0ecb0cb3",
+        "reminder":"06/06/2019"
+    },
+
+    "updateNoteReminder400":{
+        "noteID":"5d4d78b4e6b9bd3c0ecb0cb3",
+        "reminder":"01/08/1997"
+    },
+
+    "updateNoteReminder422":{
+        "noteID":"",
+        "reminder":""
+    },
+
+    "trashNote200":{
+        "noteID":"5d4d78b4e6b9bc3c0ecb0cb3"
+    },
+
+    "trashNote400":{
+        "noteID":"5d4d78b4e6b9bd3c0ecb0cb3"
+    },
+
+    "trashNote422":{
+        "noteID":""
+    },
+
+    "archiveNote200":{
+        "noteID":"5d4d78b4e6b9bc3c0ecb0cb3"
+    },
+
+    "archiveNote400":{
+        "noteID":"5d4d78b4e6b9bd3c0ecb0cb3"
+    },
+
+    "archiveNote422":{
+        "noteID":""
+    },
+
+    "deleteNote200":{
+        "noteID":"5d4d77107cb8143a8cc94fe9"
+    },
+
+    "deleteNote400":{
+        "noteID":"5d4d77107cb9143a8cc94fe9"
+    },
+
+    "deleteNote422":{
+        "noteID":""
+    },
+
+    "searchNote200":{
+        "search":"he"
+    },
+
+    "searchNote400":{
+        "search":""
+    },
+
+    "allTrashNote200":{
+        "trash":true
+    },
+
+    "allTrashNote400":{
+        "trash":""
+    },
+
+    "allArchiveNote200":{
+        "trash":false,
+        "archive": true
+    },
+
+    "allArchiveNote400":{
+        "trash":"",
+        "archive": ""
+    },
+
+    "allNotes200":{
+        "trash":false,
+        "archive": false
+    },
+
+    "allNotes400":{
+        "trash":"",
+        "archive": ""
+    },
+
+    "createLabel200":{
+        "labelName" : "new label"
+    },
+
+    "createLabel400":{
+        "labelName" : ""
+    },
+
+    "createLabel422":{
+        "labelName" : ""
+    },
+
+    "updateLabel200":{
+        "labelID" : "5d57f3d48146f20a8d018b9a",
+        "labelName" : "test label"
+    },
+
+    "updateLabel400":{
+        "labelID" : "5d57f3d48146f20b8d018b9a",
+        "labelName" : "test label"
+    },
+    
+    "deleteLabel200":{
+        "labelID" : "5d57f3d48146f20a8d018b9a"
+    },
+
+    "deleteLabel400":{
+        "labelID" : "5d57f3d48146f20b8d018b9a"
+    },
+
+    "deleteLabel422":{
+        "labelID" : ""
+    }
+}

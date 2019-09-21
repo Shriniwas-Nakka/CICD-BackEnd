@@ -1,0 +1,49 @@
+/***********************************************
+ * @Purpose - FundooNotes (Token Verification)
+ * @file    - tokenVerification.js
+ * @author  - Shriniwas Nakka
+ * @since   - 23/07/2019
+ ***********************************************/
+
+const jwt = require('jsonwebtoken');
+var redis = require('redis');
+var client = redis.createClient();
+require('dotenv').config();
+
+module.exports.tokenVerification = function (req, res, next) {
+    try {
+        /**
+         * @description : passing token into header
+         */
+        var token = req.header('token') || req.params.token;
+        console.log('token verification --->', token);
+        client.get("auth" + token, (err, data) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('redis token verify------>', data, process.env.secretKey);
+                var msg = {
+                    "message": "Unauthorized user"
+                };
+
+                if (data) {
+                    /**
+                     * @description : verifies a given token using secret key to get decoded token 
+                     */
+                    jwt.verify(data, 'fundooKey', (err, data) => {
+                        if (err) {
+                            return res.status(401).send(msg);
+                        } else {
+                            req.decoded = data;
+                            console.log('data', data);
+                            console.log('decoded data', req.decoded);
+                            next();
+                        }
+                    });
+                }
+            }
+        });
+    } catch (err) {
+        console.log('Failed to verify token.', err);
+    }
+}

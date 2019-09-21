@@ -1,0 +1,51 @@
+/***********************************************
+ * @execution - node server.js
+ * @file    - server.js
+ * @author  - Shriniwas Nakka
+ * @version - 8.10.0
+ * @since   - 23/07/2019
+ ***********************************************/
+
+/**
+* @description: requiring all things which need to run server.js
+*/
+require('./config/config');
+require('./config/db');
+
+
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var cors = require('cors');
+var routes = require('./routes/routes');
+// var imageUploadRoutes = require('./routes/image-upload');
+var expressValidator= require('express-validator');
+require('dotenv').config();
+
+/**
+* @description: requiring and establishing redis connection  
+*/
+var redis = require('./config/redisConfig');
+redis.redisConnection();
+
+/*
+* configuring middleware
+* Body Parser middleware
+*/
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
+
+app.use(cors());
+
+app.use('/fundoo', routes);
+app.get('/', function(req, res){
+    res.send('Welcome to FundooNotes');
+});
+
+/**
+* @description: listening to port 
+*/
+app.listen(process.env.PORT, () => console.log('Server started at ',process.env.PORT));
+
+module.exports = app

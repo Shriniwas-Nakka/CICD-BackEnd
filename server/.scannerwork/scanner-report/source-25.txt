@@ -1,0 +1,235 @@
+/***********************************************
+ * @Purpose -FundooNotes (Controllers)
+ * @file    - user.controllers.js
+ * @author  - Shriniwas Nakka
+ * @since   - 23/07/2019
+ ***********************************************/
+
+var userServices = require('../services/user.services');
+
+/************ User Register Controllers **************/
+/**
+ * @description  :  user register controllers
+ * @param {* request from frontend} req
+ * @param {* response to backend } res
+ */
+module.exports.registerCtrl = (req, res) => {
+    try {
+        /**
+         * @description : validations for user registration using express validator
+         */
+        req.checkBody('username', 'Username should not be empty').notEmpty();
+        req.checkBody('username', 'Username is invalid').isLength({ min: 3 });
+        req.checkBody('email', 'Email ID should not be empty').notEmpty();
+        req.checkBody('email', 'Email ID is invalid').isEmail();
+        req.checkBody('mobile', 'Mobile number should not be empty').notEmpty();
+        req.checkBody('mobile', 'Mobile number should be 10 digit').isLength({ min: 10, max: 10 });
+        req.checkBody('password', 'Password should not be empty').notEmpty();
+        req.checkBody('password', 'Password should be atleast 8 characters long').isLength({ min: 8 }).equals(req.body.password);
+
+        var error = req.validationErrors();
+        var response = {};
+        if (error) {
+            response.success = false;
+            response.error = error;
+            return res.status(422).send(error);
+        } else {
+
+            userServices.registerService(req.body, (err, data) => {
+                if (err) {
+                    response.success = false;
+                    response.error = err;
+                    return res.status(400).send(err);
+                } else {
+                    response.success = true;
+                    response.result = data;
+                    return res.status(200).send(response);
+                }
+            });
+        }
+    } catch (err) {
+        console.log(err);
+        return res(err);
+    }
+}
+
+/************ User Login Controller **************/
+/**
+ * @description  :  user login controller
+ * @param {* request from frontend} req
+ * @param {* response to backend } res
+ */
+module.exports.loginCtrl = (req, res) => {
+    try {
+        /**
+         * @description : validations for user login using express validator
+         */
+        req.checkBody('email', 'Email ID should not be empty').notEmpty();
+        req.checkBody('email', 'Email ID is invalid').isEmail();
+        req.checkBody('password', 'Password should not be empty').notEmpty();
+        req.checkBody('password', 'Password should be atleast 8 characters long').isLength({ min: 8 }).equals(req.body.password);
+
+        var error = req.validationErrors();
+        var response = {};
+        if (error) {
+            response.success = false;
+            response.error = error;
+            return res.status(422).send(error);
+        } else {
+            userServices.loginService(req.body, (err, data) => {
+                var response = {};
+                if (err) {
+                    response.success = false;
+                    response.error = err;
+                    return res.status(400).send(err);
+                } else {
+                    response.success = true;
+                    response.result = data;
+                    return res.status(200).send(response);
+                }
+            });
+        }
+    } catch (err) {
+        console.log(err);
+        return res(err);
+    }
+}
+
+/************ Forgot Password Controller **************/
+/**
+ * @description  :  forgot password controller
+ * @param {* request from frontend } req
+ * @param {* response to backend } res
+ */
+module.exports.forgotCtrl = (req, res) => {
+    try {
+        /**
+         * @description : validations for forgot password using express validator
+         */
+        req.checkBody('email', 'Email ID should not be empty').notEmpty();
+        req.checkBody('email', 'Email ID is invalid').isEmail();
+
+        var error = req.validationErrors();
+        var response = {};
+        if (error) {
+            response.success = false;
+            response.error = error;
+            return res.status(422).send(error);
+        } else {
+            userServices.forgotService(req.body, (err, data) => {
+                if (err) {
+                    response.success = false;
+                    response.error = err;
+                    return res.status(400).send(err);
+                } else {
+                    response.success = true;
+                    response.result = data;
+                    return res.status(200).send(response);
+                }
+            });
+        }
+    } catch (err) {
+        return res(err);
+    }
+}
+
+/************ Reset Password Controller **************/
+/**
+ * @description  :  reset password controller
+ * @param {* request from frontend } req
+ * @param {* response to backend } res
+ */
+module.exports.resetCtrl = (req, res) => {
+    try {
+        /**
+         * @description : validations for reset password using express validator
+         */
+        req.checkBody('password', 'Password should not be empty').notEmpty();
+        req.checkBody('password', 'Password should be atleast 8 characters long').isLength({ min: 8 }).equals(req.body.password);
+        console.log('reset data', req.decoded, req.body);
+        var error = req.validationErrors();
+        var response = {};
+        if (error) {
+            response.success = false;
+            response.error = error;
+            return res.status(422).send(error);
+        } else {
+            var obj = {
+                email: req.decoded.email,
+                password: req.body.password
+            }
+            console.log('object-->', obj);
+            userServices.resetService(obj, (err, data) => {
+                if (err) {
+                    response.success = false;
+                    response.error = err;
+                    return res.status(400).send(err);
+                } else {
+                    response.success = true;
+                    response.result = data;
+                    return res.status(200).send(response);
+                }
+            });
+        }
+    } catch (err) {
+        return res(err);
+    }
+}
+
+/************ Email Verification Controller **************/
+/**
+ * @description  :  email verification controller
+ * @param {* request from frontend } req
+ * @param {* response to backend } res
+ */
+module.exports.verifyCtrl = (req, res) => {
+    try {
+        var response = {};
+        var objParam = {
+            email: req.decoded.email
+        }
+        console.log('verify email decoded', obj);
+        userServices.verifyService(objParam, (err, data) => {
+            if (err) {
+                response.success = false;
+                response.error = err;
+                return res.status(400).send(err);
+            } else {
+                response.success = true;
+                response.result = data;
+                return res.status(200).send(response);
+            }
+        });
+    } catch (err) {
+        return res(err);
+    }
+}
+
+
+/************ Image Upload Controller **************/
+/**
+ * @description  :  image upload controller
+ * @param {* request from frontend } req
+ * @param {* response to backend } res
+ */
+module.exports.imageUploadCtrl = (req, res) => {
+    try {
+        console.log("body is ==>",req.body);
+        
+        var response = {};
+        userServices.imageUploadService(req, (err, data) => {
+            if (err) {
+                response.success = false;
+                response.error = err;
+                return res.status(400).send(err);
+            } else {
+                response.success = true;
+                response.result = data;
+                return res.status(200).send(response);
+            }
+        })
+    } catch (err) {
+        console.log(err)
+        return res(err);
+    }
+}

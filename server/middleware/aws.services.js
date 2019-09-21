@@ -1,0 +1,43 @@
+/***********************************************
+ * @Purpose - FundooNotes 
+ * @file    - aws.services.js
+ * @author  - Shriniwas Nakka
+ * @since   - 31/07/2019
+ ***********************************************/
+
+var aws = require('aws-sdk');
+var multer = require('multer');
+var multerS3 = require('multer-s3');
+
+var s3 = new aws.S3({
+    region : 'ap-south-1',
+    //AWSAccessKeyId : process.env.AWSAccessKeyId,
+    //AWSSecretKey : process.env.AWSSecretKey
+});
+/** 
+* @description: image filter
+*/
+const fileFilter = function(req, file, callback){
+    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+        callback(null, true)
+    }else{
+        callback(new Error('Invalid MIME type, only JEPG & PNG support',false));
+    }
+}
+
+var upload = multer({
+    fileFilter,
+    storage: multerS3({ 
+        s3 : s3,
+        bucket: 'image-upload12',
+        acl : 'public-read',
+        metadata: function(req, file, callback){
+            callback(null, {fieldName : 'MetaData'});
+        },
+        key : function(req, file, callback){
+            callback(null, Date.now().toString())
+        }
+    })
+})
+
+module.exports = upload;

@@ -1,0 +1,28 @@
+/***********************************************
+ * @Purpose - FundooNotes (Token Generation)
+ * @file    - tokenGeneration.js
+ * @author  - Shriniwas Nakka
+ * @since   - 23/07/2019
+ ***********************************************/
+
+const jwt = require('jsonwebtoken');
+
+module.exports.tokenGenerate = function (payload) {
+    try {
+        /**
+         * @description : signs the given payload into JSON web token payload 
+         */
+        const token = jwt.sign(payload, process.env.secretKey, { expiresIn: '1d' });
+        /**
+         * @description : returns message with token after successfully generating token 
+         */
+        var msg = {
+            success: true,
+            mesasge: "Token generated successfully",
+            token: token
+        }
+        return msg;
+    } catch (err) {
+        console.log('Failed to generate tokens.');
+    }
+}
