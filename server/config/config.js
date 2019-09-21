@@ -1,5 +1,5 @@
 /*
-* @description: checking env
+* @description: checking env //
 */
 var env = process.env.NODE_ENV || 'development';
 /*
